@@ -8,7 +8,7 @@ $(() => {
 
   const startLoading = () => {
     let batchStart = 0;
-    while (batchStart + 5 < IMAGE_IDS.length) {
+    while (batchStart < IMAGE_IDS.length) {
       load(batchStart);
 
       batchStart += 5;
