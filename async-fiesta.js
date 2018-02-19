@@ -6,6 +6,8 @@ $(() => {
   const getImageUrl = id =>
     `https://process.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/cache=expiry:max/rotate=deg:exif/rotate=deg:0/resize=width:20,height:20,fit:crop/output=format:jpg,quality:95/compress/${id}`;
 
+  var isPaused = false;
+
   function resolveAfterOneSecond(x) {
     return new Promise(resolve => {
       setTimeout(() => {
@@ -15,13 +17,16 @@ $(() => {
   }
 
   const startLoading = async () => {
+    isPaused = false;
     let batchStart = 0;
     let timeout = 1000;
     while (batchStart < IMAGE_IDS.length) {
-      console.log(batchStart);
-      load(batchStart);
-      await resolveAfterOneSecond();
-      batchStart += 5;
+      if (isPaused === false) {
+        console.log(batchStart);
+        load(batchStart);
+        await resolveAfterOneSecond();
+        batchStart += 5;
+      }
     }
     console.log("Start!");
   };
@@ -37,6 +42,7 @@ $(() => {
   };
 
   const stopLoading = () => {
+    isPaused = true;
     console.log("Stop!");
   };
 
