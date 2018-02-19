@@ -1,3 +1,7 @@
+a {
+  color: black;
+}
+
 .curated-list {
   display: flex;
   position: relative;
@@ -38,14 +42,44 @@
 }
 
 .photo-bucket {
-  margin: auto;
+  width: 90%;
+  margin-left: 5%;
 }
+
 .photo-bucket img {
   margin: 10px;
 }
 .photo-display {
   width: 80%;
   margin: auto;
+}
+
+.splash {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 80%;
+  margin: auto;
+  position: relative;
+}
+
+.splash-link {
+  position: absolute;
+  bottom: 10px;
+  left: 130px;
+}
+
+.splash-text {
+  grid-row-start: 1;
+  grid-column-end: 2;
+  z-index: 1;
+  width: 200%;
+}
+.spash-image-container {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.splash-image-container img {
+  max-width: 200%;
 }
 
 .upper-right {
