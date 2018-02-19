@@ -1,0 +1,30 @@
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.headline {
+  text-align: center;
+}
+
+.photo-bucket {
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row: 3;
+}
+.photo-bucket img {
+  margin: 10px;
+}
+
+.row-one {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: 1;
+}
+.row-two {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+}

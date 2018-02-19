@@ -4,29 +4,27 @@ $(() => {
 
   // NOTE: The height and width variables can be changed to fetch different sized images.
   const getImageUrl = id =>
-    `https://process.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/cache=expiry:max/rotate=deg:exif/rotate=deg:0/resize=width:20,height:20,fit:crop/output=format:jpg,quality:95/compress/${id}`;
+    `https://process.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/cache=expiry:max/rotate=deg:exif/rotate=deg:0/resize=width:200,height:200,fit:crop/output=format:jpg,quality:95/compress/${id}`;
 
-  var isPaused = false;
+  var isPaused;
+  var batchStart = 0;
 
   function resolveAfterOneSecond(x) {
     return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(x);
-      }, 1000);
+      if (isPaused === false) {
+        setTimeout(() => {
+          resolve(x);
+        }, 1000);
+      }
     });
   }
 
   const startLoading = async () => {
     isPaused = false;
-    let batchStart = 0;
-    let timeout = 1000;
     while (batchStart < IMAGE_IDS.length) {
-      if (isPaused === false) {
-        console.log(batchStart);
-        load(batchStart);
-        await resolveAfterOneSecond();
-        batchStart += 5;
-      }
+      load(batchStart);
+      await resolveAfterOneSecond();
+      batchStart += 5;
     }
     console.log("Start!");
   };
