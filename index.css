@@ -1,18 +1,27 @@
-.wrapper {
+body {
   display: grid;
-  grid-gap: 10px;
+  grid-template-rows: 100px 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "header header header"
+    "empty headline empty"
+    "content content content"
+    "main main main";
 }
 
-.curated-list-one {
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row: 2;
+.header {
+  grid-area: header;
 }
-.curated-list-one img {
+
+.curated-list {
+  grid-area: content;
+}
+.curated-list img {
   max-width: 20%;
 }
 
 .headline {
+  grid-area: headline;
   text-align: center;
 }
 
@@ -20,9 +29,7 @@
   width: 70%;
   margin-left: 15%;
   margin-right: 15%;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row: 3;
+  grid-area: main;
 }
 .photo-bucket img {
   margin: 10px;
