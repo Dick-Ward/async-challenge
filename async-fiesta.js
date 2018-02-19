@@ -4,20 +4,19 @@ $(() => {
 
   // NOTE: The height and width variables can be changed to fetch different sized images.
   const getImageUrl = id =>
-    `https://process.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/cache=expiry:max/rotate=deg:exif/rotate=deg:0/resize=width:100,height:100,fit:crop/output=format:jpg,quality:95/compress/${id}`;
+    `https://process.fs.grailed.com/AJdAgnqCST4iPtnUxiGtTz/cache=expiry:max/rotate=deg:exif/rotate=deg:0/resize=width:20,height:20,fit:crop/output=format:jpg,quality:95/compress/${id}`;
 
   const startLoading = () => {
     let batchStart = 0;
+    let timeout = 1000;
     while (batchStart < IMAGE_IDS.length) {
-      load(batchStart);
-
-      batchStart += 5;
+      setTimeout(function() {
+        console.log(batchStart);
+        load(batchStart);
+        batchStart += 5;
+      }, timeout);
+      timeout += 1000;
     }
-
-    // get first five in images.js array
-    //  iterate through and create those image objects
-    // then draw them
-    // TODO: Implement me.
     console.log("Start!");
   };
 
